@@ -1,0 +1,5 @@
+0.61
+perl(HTML::Parser)
+perl(HTTP::Headers::Util)
+perl(HTTP::Response)
+perl(URI)
