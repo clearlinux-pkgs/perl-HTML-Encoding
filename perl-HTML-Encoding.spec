@@ -4,7 +4,7 @@
 #
 Name     : perl-HTML-Encoding
 Version  : 0.61
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhtml-encoding-perl/libhtml-encoding-perl_0.61-2.debian.tar.xz
@@ -46,7 +46,7 @@ license components for the perl-HTML-Encoding package.
 cd ..
 %setup -q -T -D -n HTML-Encoding-0.61 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTML-Encoding-0.61/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTML-Encoding-0.61/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
