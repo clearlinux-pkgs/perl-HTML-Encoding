@@ -4,7 +4,7 @@
 #
 Name     : perl-HTML-Encoding
 Version  : 0.61
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhtml-encoding-perl/libhtml-encoding-perl_0.61-2.debian.tar.xz
@@ -28,6 +28,7 @@ documents...
 Summary: dev components for the perl-HTML-Encoding package.
 Group: Development
 Provides: perl-HTML-Encoding-devel = %{version}-%{release}
+Requires: perl-HTML-Encoding = %{version}-%{release}
 
 %description dev
 dev components for the perl-HTML-Encoding package.
