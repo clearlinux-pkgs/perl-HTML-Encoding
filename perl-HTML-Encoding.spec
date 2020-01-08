@@ -4,7 +4,7 @@
 #
 Name     : perl-HTML-Encoding
 Version  : 0.61
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhtml-encoding-perl/libhtml-encoding-perl_0.61-2.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : Determine the encoding of HTML/XML/XHTML documents
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-HTML-Encoding-license = %{version}-%{release}
+Requires: perl-HTML-Encoding-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(HTML::Parser)
 BuildRequires : perl(HTTP::Headers::Util)
@@ -42,18 +43,28 @@ Group: Default
 license components for the perl-HTML-Encoding package.
 
 
+%package perl
+Summary: perl components for the perl-HTML-Encoding package.
+Group: Default
+Requires: perl-HTML-Encoding = %{version}-%{release}
+
+%description perl
+perl components for the perl-HTML-Encoding package.
+
+
 %prep
 %setup -q -n HTML-Encoding-0.61
-cd ..
-%setup -q -T -D -n HTML-Encoding-0.61 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libhtml-encoding-perl_0.61-2.debian.tar.xz
+cd %{_builddir}/HTML-Encoding-0.61
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTML-Encoding-0.61/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/HTML-Encoding-0.61/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -63,7 +74,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -72,7 +83,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-HTML-Encoding
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTML-Encoding/deblicense_copyright
+cp %{_builddir}/HTML-Encoding-0.61/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTML-Encoding/e04de3ee72e8f46f8a936ab329e8eb2d776c37a1
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -85,7 +96,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/HTML/Encoding.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -93,4 +103,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-HTML-Encoding/deblicense_copyright
+/usr/share/package-licenses/perl-HTML-Encoding/e04de3ee72e8f46f8a936ab329e8eb2d776c37a1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/HTML/Encoding.pm
