@@ -4,7 +4,7 @@
 #
 Name     : perl-HTML-Encoding
 Version  : 0.61
-Release  : 15
+Release  : 16
 URL      : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhtml-encoding-perl/libhtml-encoding-perl_0.61-2.debian.tar.xz
@@ -83,7 +83,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-HTML-Encoding
-cp %{_builddir}/HTML-Encoding-0.61/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTML-Encoding/e04de3ee72e8f46f8a936ab329e8eb2d776c37a1
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-HTML-Encoding/e04de3ee72e8f46f8a936ab329e8eb2d776c37a1
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -107,4 +107,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/HTML/Encoding.pm
+/usr/lib/perl5/vendor_perl/5.30.2/HTML/Encoding.pm
