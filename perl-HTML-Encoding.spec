@@ -4,7 +4,7 @@
 #
 Name     : perl-HTML-Encoding
 Version  : 0.61
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhtml-encoding-perl/libhtml-encoding-perl_0.61-2.debian.tar.xz
@@ -107,4 +107,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/HTML/Encoding.pm
+/usr/lib/perl5/vendor_perl/5.32.1/HTML/Encoding.pm
